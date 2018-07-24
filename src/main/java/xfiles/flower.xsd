@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified"
+           elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <!-- definition of simple elements -->
+    <xs:element name="name" type="xs:string"/>
+    <xs:element name="origin" type="xs:string"/>
+    <!-- definition of complex elements -->
+    <xs:element name="ground">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="podzolic"/>
+                <xs:enumeration value="soils"/>
+                <xs:enumeration value="turf-podzolic"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="watering">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="mililiters" type="xs:int"/>
+                <xs:element name="weeks" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="multiplying">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="leaves"/>
+                <xs:enumeration value="cuttings"/>
+                <xs:enumeration value="seed"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+
+    <xs:element name="flower_color">
+        <xs:simpleType>
+            <xs:restriction base="xs:token">
+                <xs:pattern value="#[\dA-F]{6}([\dA-F][\dA-F])?"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="leaf_color">
+        <xs:simpleType>
+            <xs:restriction base="xs:token">
+                <xs:pattern value="#[\dA-F]{6}([\dA-F][\dA-F])?"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="plant_size">
+        <xs:simpleType>
+            <xs:restriction base="xs:int">
+                <xs:minInclusive value="0"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="temperature">
+        <xs:simpleType>
+            <xs:restriction base="xs:int">
+                <xs:minInclusive value="10"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="light">
+        <xs:simpleType>
+            <xs:restriction base="xs:boolean">
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="visual_parameters">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="flower_color"/>
+                <xs:element ref="leaf_color"/>
+                <xs:element ref="plant_size"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="growing_tips">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="temperature"/>
+                <xs:element ref="light"/>
+                <xs:element ref="watering"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="flower_information">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="name"/>
+                <xs:element ref="origin"/>
+                <xs:element ref="ground"/>
+                <xs:element ref="visual_parameters"/>
+                <xs:element ref="growing_tips"/>
+                <xs:element ref="multiplying"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!-- xsd itself -->
+    <xs:element name="flower">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="flower_information" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+</xs:schema>
