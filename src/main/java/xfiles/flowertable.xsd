@@ -1,0 +1,70 @@
+<xsl:stylesheet version="1.0"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+    <xsl:template match="/">
+        <html>
+            <body>
+                <table border="1">
+                    <tr>
+                        <th>Name</th>
+                        <th>Origin</th>
+                        <th>Ground</th>
+                        <th>Visual parameters</th>
+                        <th>Growing Tips</th>
+                        <th>Multiplying</th>
+                    </tr>
+                    <xsl:for-each select="flower/flower">
+                        <tr>
+                            <td>
+                                <xsl:value-of select="name" />
+                            </td>
+                            <td>
+                                <xsl:value-of select="origin" />
+                            </td>
+                            <td>
+                                <xsl:value-of select="ground" />
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>
+                                        Color of flower:
+                                        <xsl:value-of select="visual_parameters/flower_color" />
+                                    </li>
+                                    <li>
+                                        Color of leafs:
+                                        <xsl:value-of select="visual_parameters/leaf_color" />
+                                    </li>
+                                    <li>
+                                    Size of plant:
+                                    <xsl:value-of select="visual_parameters/plant_size" />
+                                </li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>
+                                        Temperature:
+                                        <xsl:value-of select="growing_tips/temperature" />
+                                    </li>
+                                    <li>
+                                        Need of light:
+                                        <xsl:value-of select="growing_tips/light" />
+                                    </li>
+                                    <li>
+                                        Need of water:
+                                        <xsl:value-of select="growing_tips/watering" />
+                                    </li>
+
+                                </ul>
+                            </td>
+                            <td>
+                                <xsl:value-of select="multiplying" />
+                            </td>
+                        </tr>
+                    </xsl:for-each>
+                </table>
+            </body>
+        </html>
+    </xsl:template>
+
+</xsl:stylesheet>

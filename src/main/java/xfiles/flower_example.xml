@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="flowertable.xsl"?>
+<flower>
+    <flower>
+        <name>rose</name>
+        <origin>Netherlands</origin>
+        <ground>podzolic</ground>
+        <visual_parameters>
+            <flower_color>red</flower_color>
+            <leaf_color>green</leaf_color>
+            <plant_size>20</plant_size>
+        </visual_parameters>
+        <growing_tips>
+            <temperature>25</temperature>
+            <light>true</light>
+            <watering>
+                <mililiters>100</mililiters>
+                <weeks>1</weeks>
+            </watering>
+        </growing_tips>
+        <multiplying>leaves</multiplying>
+    </flower>
+</flower>
